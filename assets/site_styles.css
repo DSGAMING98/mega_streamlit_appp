@@ -1,0 +1,26 @@
+/* General layout */
+body {
+    background-color: #f9f9f9;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+    color: #222;
+}
+
+/* Sidebar styling */
+.css-1d391kg {
+    background-color: #f0f0f5;
+    padding: 20px;
+}
+
+/* Main container tweaks */
+.css-18e3th9 {
+    padding: 30px;
+}
+
+/* Remove Streamlit footer */
+footer {
+    visibility: hidden;
+}
