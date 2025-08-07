@@ -7,11 +7,11 @@ from datetime import datetime, timedelta
 
 # Setup backend import
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-BACKEND_PATH = os.path.abspath(os.path.join(CURRENT_DIR, "..", "backend"))
-if BACKEND_PATH not in sys.path:
-    sys.path.insert(0, BACKEND_PATH)
+ROOT_DIR = os.path.abspath(os.path.join(CURRENT_DIR, ".."))
+if ROOT_DIR not in sys.path:
+    sys.path.append(ROOT_DIR)
 
-from magic_tools import list_files, ensure_dir
+from backend.magic_tools import list_files, ensure_dir
 
 # Auth check
 if not st.session_state.get("authenticated"):
@@ -28,7 +28,6 @@ UPLOADS_DIR = os.path.abspath(os.path.join(CURRENT_DIR, "..", "data", "uploads")
 ensure_dir(ENTRIES_DIR)
 ensure_dir(UPLOADS_DIR)
 
-# Helper to extract date from filenames (must be in format entry_YYYY-MM-DD_...)
 def extract_date(file):
     try:
         parts = file.split("_")

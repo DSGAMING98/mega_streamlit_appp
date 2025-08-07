@@ -2,15 +2,16 @@ import os
 import sys
 import streamlit as st
 
-# === GLOBAL PATH SETUP ===
+# Make sure the root of your project is added to sys.path
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(ROOT_DIR)
 
-# === SESSION DEFAULTS ===
+from backend.magic_tools import list_files, ensure_dir
+
+
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
-# === STYLE INJECTION ===
 def inject_custom_css():
     css_path = os.path.join("assets", "site_styles.css")
     if os.path.exists(css_path):
@@ -19,7 +20,6 @@ def inject_custom_css():
 
 inject_custom_css()
 
-# === CONFIG ===
 st.set_page_config(
     page_title="Mega Streamlit App",
     page_icon="📊",
@@ -27,10 +27,8 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# === SIDEBAR ===
 from components.sidebar_nav import render_sidebar
 render_sidebar()
 
-# === MAIN LANDING PAGE ===
 st.title("Welcome to the Mega Streamlit App")
 st.markdown("Navigate using the **sidebar** to access all available modules and tools.")
